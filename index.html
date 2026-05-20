@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HMVOD TV - Преміум Платформа Кіно-Оцінок</title>
+    <!-- FontAwesome Icons for modern dashboard looks -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link to the premium styling sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Premium Toast Overlay Notification System -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header>
+            <div class="logo-container">
+                <div class="logo-icon">H</div>
+                <span class="logo-text neon-gradient-text">HMVOD <span style="font-size: 13px; font-weight: 800; color: var(--gold);">VIP</span></span>
+            </div>
+            <div class="header-actions">
+                <a href="https://t.me/telegram" target="_blank" class="icon-btn" style="text-decoration: none;">
+                    <i class="fab fa-telegram-plane" style="color: #0088cc; font-size: 18px;"></i>
+                </a>
+                <div class="icon-btn" id="support-menu-btn">
+                    <i class="fas fa-headset" style="color: var(--accent);"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN SPA SCREENS CONTAINER -->
+        <main>
+            
+            <!-- 1. HOME SCREEN -->
+            <section id="home" class="app-screen active">
+                
+                <!-- Banners Slider Simulation -->
+                <div class="banner-slider">
+                    <div class="banner-track">
+                        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=600&auto=format&fit=crop')">
+                            <div class="slide-content">
+                                <h3 class="gradient-text">Ексклюзивний кінопрокат</h3>
+                                <p>Оцінюйте світові бестселери та отримуйте високі дивіденди</p>
+                            </div>
+                        </div>
+                        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=600&auto=format&fit=crop')">
+                            <div class="slide-content">
+                                <h3 class="gradient-text">Клуб VIP Інвесторів</h3>
+                                <p>Підвищуйте свій рівень VIP для доступу до ексклюзивних кінострічок</p>
+                            </div>
+                        </div>
+                        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=600&auto=format&fit=crop')">
+                            <div class="slide-content">
+                                <h3 class="gradient-text">Колесо Фортуни 2026</h3>
+                                <p>Отримуйте щоденний білет за активність та вигравайте Джекпот</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="banner-dots">
+                        <div class="dot active"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+
+                <!-- Ticker News Bar -->
+                <div class="notice-bar">
+                    <i class="fas fa-volume-up"></i>
+                    <div class="notice-ticker">
+                        <div class="ticker-content">
+                            <div class="ticker-item">Вітаємо! Користувач +38096***14 отримав VIP 2 та вивів $150.00!</div>
+                            <div class="ticker-item">Бонуси для нових партнерів: +$15.00 за реєстрацію!</div>
+                            <div class="ticker-item">Важливо: використовуйте виключно мережу USDT TRC-20 для транзакцій.</div>
+                            <div class="ticker-item">Розіграш Джекпоту в Колесі Фортуни триває до кінця тижня!</div>
+                            <div class="ticker-item">Реферальна програма: запрошуйте друзів та заробляйте 10%-5%-2%.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="actions-grid">
+                    <div class="action-card" id="home-recharge-btn">
+                        <div class="action-icon"><i class="fas fa-wallet"></i></div>
+                        <span class="action-label">Депозит</span>
+                    </div>
+                    <div class="action-card" id="home-withdraw-btn">
+                        <div class="action-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                        <span class="action-label">Виведення</span>
+                    </div>
+                    <div class="action-card" id="home-lottery-btn">
+                        <div class="action-icon"><i class="fas fa-dharmachakra"></i></div>
+                        <span class="action-label">Рулетка</span>
+                    </div>
+                    <div class="action-card" id="home-checkin-btn">
+                        <div class="action-icon"><i class="fas fa-calendar-check"></i></div>
+                        <span class="action-label">Чек-ін</span>
+                    </div>
+                </div>
+
+                <!-- Balance Summary Quick Card -->
+                <div class="glass-card balance-box" style="margin-bottom: 24px;">
+                    <div class="balance-title">Ваш поточний капітал</div>
+                    <div class="balance-row">
+                        <div class="balance-amount"><span class="user-balance">0.00</span><span class="currency-tag">USDT</span></div>
+                        <span class="profile-vip-tag" id="vip-level-profile" style="margin-top:0;">VIP 0</span>
+                    </div>
+                </div>
+
+                <!-- Live User Profit Activity Feed -->
+                <div class="live-feed-section">
+                    <div class="section-header">
+                        <h3 class="section-title">Виплати учасникам в ефірі</h3>
+                        <span style="font-size: 11px; color: var(--accent); font-weight: 600;"><i class="fas fa-circle" style="font-size:8px; animation: pulse 1s infinite; margin-right:4px;"></i> Live Feed</span>
+                    </div>
+                    <div class="feed-container">
+                        <!-- Populated dynamically via app.js -->
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- 2. TASKS / GRAB SCREEN -->
+            <section id="tasks" class="app-screen">
+                <h2 class="outfit-font gradient-text" style="font-size: 24px; margin-bottom: 16px;">Центр Завдань</h2>
+                
+                <!-- Grab Engine Summary -->
+                <div class="tasks-header">
+                    <div class="tasks-stat">
+                        <h3 id="tasks-completed-num">0/5</h3>
+                        <p>Виконано сьогодні</p>
+                    </div>
+                    <div class="tasks-stat">
+                        <h3 id="commission-earned-num">$0.00</h3>
+                        <p>Прибуток сьогодні</p>
+                    </div>
+                    <button class="grab-btn" id="main-grab-btn"><i class="fas fa-crosshairs"></i> Захопити кіно</button>
+                </div>
+
+                <div class="section-header" style="margin-top: 24px; margin-bottom: 14px;">
+                    <h3 class="section-title">Доступний прокат на сьогодні</h3>
+                </div>
+
+                <!-- Interactive list of movies -->
+                <div class="movies-grid">
+                    <!-- Populated dynamically via app.js -->
+                </div>
+            </section>
+
+
+            <!-- 3. VIP LEVELS SCREEN -->
+            <section id="vip" class="app-screen">
+                <h2 class="outfit-font gradient-text" style="font-size: 24px; margin-bottom: 8px;">Рівні Привілеїв</h2>
+                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 24px;">Активуйте преміум-пакети VIP для збільшення щоденних кіно-завдань та отримання високих комісійних з прокату.</p>
+
+                <!-- VIP levels Grid list -->
+                <div class="vip-grid">
+                    
+                    <!-- VIP 0 -->
+                    <div class="glass-card vip-card" data-level="0">
+                        <div class="vip-badge">VIP 0</div>
+                        <h3 class="vip-title">Стартовий</h3>
+                        <div class="vip-info">
+                            <div class="vip-info-item">
+                                <p>Ціна активації</p>
+                                <span>Безкоштовно</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Щоденних завдань</p>
+                                <span>5 оцінок</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Ставка прибутку</p>
+                                <span>2.0% за фільм</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Очікуваний дохід</p>
+                                <span>до $2.50 / день</span>
+                            </div>
+                        </div>
+                        <button class="vip-btn active-btn"><i class="fas fa-check-circle"></i> Активно</button>
+                    </div>
+
+                    <!-- VIP 1 -->
+                    <div class="glass-card vip-card" data-level="1">
+                        <div class="vip-badge">VIP 1</div>
+                        <h3 class="vip-title">Бронзовий кінокритик</h3>
+                        <div class="vip-info">
+                            <div class="vip-info-item">
+                                <p>Ціна активації</p>
+                                <span>50.00 USDT</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Щоденних завдань</p>
+                                <span>10 оцінок</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Ставка прибутку</p>
+                                <span>3.0% за фільм</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Очікуваний дохід</p>
+                                <span>до $7.50 / день</span>
+                            </div>
+                        </div>
+                        <button class="vip-btn lock"><i class="fas fa-unlock"></i> Розблокувати за $50.00</button>
+                    </div>
+
+                    <!-- VIP 2 -->
+                    <div class="glass-card vip-card" data-level="2">
+                        <div class="vip-badge">VIP 2</div>
+                        <h3 class="vip-title">Срібний кінокритик</h3>
+                        <div class="vip-info">
+                            <div class="vip-info-item">
+                                <p>Ціна активації</p>
+                                <span>150.00 USDT</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Щоденних завдань</p>
+                                <span>15 оцінок</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Ставка прибутку</p>
+                                <span>4.5% за фільм</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Очікуваний дохід</p>
+                                <span>до $30.00 / день</span>
+                            </div>
+                        </div>
+                        <button class="vip-btn lock"><i class="fas fa-unlock"></i> Розблокувати за $150.00</button>
+                    </div>
+
+                    <!-- VIP 3 -->
+                    <div class="glass-card vip-card" data-level="3">
+                        <div class="vip-badge">VIP 3</div>
+                        <h3 class="vip-title">Золотий продюсер</h3>
+                        <div class="vip-info">
+                            <div class="vip-info-item">
+                                <p>Ціна активації</p>
+                                <span>500.00 USDT</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Щоденних завдань</p>
+                                <span>20 оцінок</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Ставка прибутку</p>
+                                <span>6.0% за фільм</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Очікуваний дохід</p>
+                                <span>до $120.00 / день</span>
+                            </div>
+                        </div>
+                        <button class="vip-btn lock"><i class="fas fa-unlock"></i> Розблокувати за $500.00</button>
+                    </div>
+
+                    <!-- VIP 4 -->
+                    <div class="glass-card vip-card" data-level="4">
+                        <div class="vip-badge">VIP 4</div>
+                        <h3 class="vip-title">Платиновий інвестор</h3>
+                        <div class="vip-info">
+                            <div class="vip-info-item">
+                                <p>Ціна активації</p>
+                                <span>1200.00 USDT</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Щоденних завдань</p>
+                                <span>25 оцінок</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Ставка прибутку</p>
+                                <span>8.0% за фільм</span>
+                            </div>
+                            <div class="vip-info-item">
+                                <p>Очікуваний дохід</p>
+                                <span>до $360.00 / день</span>
+                            </div>
+                        </div>
+                        <button class="vip-btn lock"><i class="fas fa-unlock"></i> Розблокувати за $1200.00</button>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- 4. PROMOTION SCREEN -->
+            <section id="promotion" class="app-screen">
+                <h2 class="outfit-font gradient-text" style="font-size: 24px; margin-bottom: 8px;">Партнерська Мережа</h2>
+                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Запрошуйте друзів у свою команду кінокритиків та отримуйте щедрі реферальні бонуси за кожен їхній прибуток.</p>
+
+                <!-- Stats summary grid -->
+                <div class="promotion-summary">
+                    <div class="promo-mini-card">
+                        <h4 id="team-size-num">14</h4>
+                        <p>Учасників команди</p>
+                    </div>
+                    <div class="promo-mini-card">
+                        <h4 id="team-deposit-num">$350.00</h4>
+                        <p>Обсяг депозитів</p>
+                    </div>
+                    <div class="promo-mini-card">
+                        <h4 id="team-commission-num">$42.50</h4>
+                        <p>Наш прибуток</p>
+                    </div>
+                </div>
+
+                <!-- Copy Referral Link Card -->
+                <div class="glass-card share-invite-box">
+                    <h3 style="font-size:15px; margin-bottom:6px;"><i class="fas fa-user-plus" style="color:var(--accent);"></i> Ваше запрошення</h3>
+                    <p style="font-size: 11px; color:var(--text-muted);">Поділіться цим посиланням з новими користувачами для реєстрації їх у вашій команді.</p>
+                    
+                    <div class="copy-link-group">
+                        <input type="text" readonly class="copy-input" id="invite-code-display" value="https://hmvod.vip/reg?ref=8493012">
+                        <button class="copy-btn" id="copy-invite-btn">Копіювати</button>
+                    </div>
+                </div>
+
+                <div class="section-header" style="margin-bottom: 12px;">
+                    <h3 class="section-title">Правила розподілу винагороди</h3>
+                </div>
+
+                <!-- Rewards tier detailed cards -->
+                <div class="referral-card">
+                    <div class="referral-header">
+                        <div class="referral-level-icon">1</div>
+                        <div class="referral-details">
+                            <h4>Партнери 1-го рівня</h4>
+                            <p>Користувачі, зареєстровані за вашим лінком</p>
+                        </div>
+                    </div>
+                    <span class="referral-commission">+10%</span>
+                </div>
+
+                <div class="referral-card">
+                    <div class="referral-header">
+                        <div class="referral-level-icon" style="color:var(--secondary); background:rgba(139,0,255,0.1); border-color:rgba(139,0,255,0.2)">2</div>
+                        <div class="referral-details">
+                            <h4>Партнери 2-го рівня</h4>
+                            <p>Користувачі, запрошені вашим першим рівнем</p>
+                        </div>
+                    </div>
+                    <span class="referral-commission" style="color:var(--secondary);">+5%</span>
+                </div>
+
+                <div class="referral-card" style="margin-bottom:24px;">
+                    <div class="referral-header">
+                        <div class="referral-level-icon" style="color:var(--primary); background:rgba(255,0,127,0.1); border-color:rgba(255,0,127,0.2)">3</div>
+                        <div class="referral-details">
+                            <h4>Партнери 3-го рівня</h4>
+                            <p>Запрошені партнерами другого рівня</p>
+                        </div>
+                    </div>
+                    <span class="referral-commission" style="color:var(--primary);">+2%</span>
+                </div>
+            </section>
+
+
+            <!-- 5. PROFILE SCREEN (MINE) -->
+            <section id="mine" class="app-screen">
+                
+                <!-- Avatar & ID info card -->
+                <div class="profile-card">
+                    <div class="profile-avatar">UA</div>
+                    <div class="profile-info">
+                        <h3>Користувач HMVOD</h3>
+                        <p style="font-size:11px; margin-bottom: 2px;"><i class="fas fa-fingerprint"></i> UID: 8493012</p>
+                        <p><i class="fas fa-phone-alt"></i> +380 97 *** ** 42</p>
+                        <span class="profile-vip-tag" id="vip-level-profile">VIP 0</span>
+                    </div>
+                </div>
+
+                <!-- Financial Balance detail box -->
+                <div class="glass-card balance-box" style="padding: 24px;">
+                    <div class="balance-title" style="margin-bottom:8px;"><i class="fas fa-shield-alt"></i> Загальний фінансовий баланс</div>
+                    <div class="balance-row">
+                        <div class="balance-amount"><span class="user-balance">0.00</span><span class="currency-tag">USDT</span></div>
+                    </div>
+                    <div style="display:flex; gap:12px; margin-top:20px;">
+                        <button class="modal-submit-btn" id="recharge-menu-btn" style="flex:1; background: linear-gradient(135deg, var(--green), #00b0ff);"><i class="fas fa-plus-circle"></i> Депозит</button>
+                        <button class="modal-submit-btn" id="withdraw-menu-btn" style="flex:1;"><i class="fas fa-arrow-alt-circle-up"></i> Вивести</button>
+                    </div>
+                </div>
+
+                <!-- Profile Menu Buttons -->
+                <div class="menu-group">
+                    <div class="menu-item" id="wheel-action-btn">
+                        <div class="menu-left">
+                            <i class="fas fa-dharmachakra menu-icon" style="color: var(--gold);"></i>
+                            <span class="menu-label">Колесо удачі (Lottery Wheel)</span>
+                        </div>
+                        <i class="fas fa-chevron-right menu-right"></i>
+                    </div>
+                    <div class="menu-item" id="sign-action-btn">
+                        <div class="menu-left">
+                            <i class="fas fa-calendar-check menu-icon" style="color: var(--green);"></i>
+                            <span class="menu-label">Щоденний Чек-ін</span>
+                        </div>
+                        <i class="fas fa-chevron-right menu-right"></i>
+                    </div>
+                    <div class="menu-item" id="kyc-menu-btn">
+                        <div class="menu-left">
+                            <i class="fas fa-user-shield menu-icon" style="color: var(--accent);"></i>
+                            <span class="menu-label">Верифікація акаунту (KYC)</span>
+                        </div>
+                        <i class="fas fa-chevron-right menu-right"></i>
+                    </div>
+                </div>
+
+                <!-- Security & Logs -->
+                <div class="menu-group" style="margin-bottom: 24px;">
+                    <div class="menu-item" style="cursor: default;">
+                        <div class="menu-left">
+                            <i class="fas fa-history menu-icon" style="color: var(--text-muted);"></i>
+                            <span class="menu-label" style="font-weight: 700;">Історія фінансових транзакцій</span>
+                        </div>
+                    </div>
+                    <div id="bills-history-list" style="padding: 0 16px 12px 16px;">
+                        <!-- Render transactions from app.js -->
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- BOTTOM NAVIGATION TABBAR -->
+        <nav class="tabbar">
+            <div class="tab-item active" data-screen="home">
+                <i class="fas fa-home"></i>
+                <span>Головна</span>
+            </div>
+            <div class="tab-item" data-screen="tasks">
+                <i class="fas fa-film"></i>
+                <span>Завдання</span>
+            </div>
+            <div class="tab-item" data-screen="vip">
+                <i class="fas fa-crown"></i>
+                <span>VIP</span>
+            </div>
+            <div class="tab-item" data-screen="promotion">
+                <i class="fas fa-users"></i>
+                <span>Команда</span>
+            </div>
+            <div class="tab-item" data-screen="mine">
+                <i class="fas fa-user-circle"></i>
+                <span>Кабінет</span>
+            </div>
+        </nav>
+
+    </div>
+
+
+    <!-- ==================== OVERLAYS & MODALS ==================== -->
+
+    <!-- 1. Rating movies overlay modal -->
+    <div class="rate-overlay" id="rate-overlay-modal">
+        <div class="rate-modal">
+            <h3 class="outfit-font gradient-text" style="font-size:20px; margin-bottom:10px;">Оцінити кінострічку</h3>
+            <p style="font-size:12px; color:var(--text-muted); margin-bottom:15px;" id="grabbed-movie-title">Dune: Part Two</p>
+            
+            <div class="rating-stars">
+                <i class="fas fa-star active" data-val="1"></i>
+                <i class="fas fa-star active" data-val="2"></i>
+                <i class="fas fa-star active" data-val="3"></i>
+                <i class="fas fa-star active" data-val="4"></i>
+                <i class="fas fa-star active" data-val="5"></i>
+            </div>
+            
+            <p style="font-size:11px; color:var(--accent); margin-bottom:20px;">* Оберіть оцінку від 1 до 5 зірок та підтвердіть для нарахування дивідендів</p>
+            
+            <div style="display:flex; gap:12px;">
+                <button class="modal-submit-btn" id="submit-rating-btn" style="flex:1;">Підтвердити</button>
+                <button class="modal-submit-btn" id="close-rating-modal" style="flex:1; background:rgba(255,255,255,0.05); color:white;">Скасувати</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Deposit/Recharge modal sheet -->
+    <div class="modal-overlay" id="recharge-modal">
+        <div class="modal-sheet">
+            <div class="modal-header">
+                <span class="modal-title outfit-font"><i class="fas fa-arrow-circle-down" style="color:var(--green)"></i> Поповнення балансу (USDT TRC20)</span>
+                <button class="close-sheet-btn"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <form>
+                <div class="form-group">
+                    <label class="form-label">Введіть суму поповнення (USDT)</label>
+                    <div class="input-container">
+                        <input type="number" class="form-input" id="recharge-amount" placeholder="Введіть суму" min="1">
+                        <span class="input-suffix">USDT</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Платіжна адреса (USDT TRC20)</label>
+                    <div class="copy-link-group" style="margin-top:0;">
+                        <input type="text" readonly class="copy-input" style="font-size:10px;" value="TY6wKNu79D193HNsZ78bAqp1XyTr982Kns">
+                        <button type="button" class="copy-btn" onclick="navigator.clipboard.writeText('TY6wKNu79D193HNsZ78bAqp1XyTr982Kns'); alert('Адресу USDT TRC20 скопійовано!');">Скопіювати</button>
+                    </div>
+                </div>
+
+                <div class="form-group" style="background:rgba(255, 0, 127, 0.05); padding:12px; border-radius:10px; border:1px solid rgba(255, 0, 127, 0.15);">
+                    <p style="font-size:10px; color:var(--text-muted); line-height:1.4;">
+                        <i class="fas fa-info-circle" style="color:var(--primary); margin-right:4px;"></i> 
+                        Надішліть вказану суму на реквізити вище в мережі TRC20. Після виконання транзакції натисніть кнопку "Я оплатив" для автоматичної верифікації нарахування.
+                    </p>
+                </div>
+
+                <button class="modal-submit-btn" id="submit-recharge-btn" style="background: linear-gradient(135deg, var(--green), #00b0ff);">Я оплатив</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. Withdraw modal sheet -->
+    <div class="modal-overlay" id="withdraw-modal">
+        <div class="modal-sheet">
+            <div class="modal-header">
+                <span class="modal-title outfit-font"><i class="fas fa-arrow-circle-up" style="color:var(--primary)"></i> Виведення зароблених коштів</span>
+                <button class="close-sheet-btn"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <form>
+                <div class="form-group">
+                    <label class="form-label">Введіть суму виведення (USDT)</label>
+                    <div class="input-container">
+                        <input type="number" class="form-input" id="withdraw-amount" placeholder="Мінімум $5.00" min="5">
+                        <span class="input-suffix">USDT</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-top:6px; font-size:11px;">
+                        <span style="color:var(--text-muted);">Доступно: $<span class="user-balance">0.00</span> USDT</span>
+                        <span style="color:var(--primary); cursor:pointer;" onclick="document.getElementById('withdraw-amount').value = parseFloat(document.querySelector('.user-balance').textContent)">Вивести все</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Адреса вашого гаманця USDT TRC-20</label>
+                    <input type="text" class="form-input" id="withdraw-address" placeholder="T...">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Фінансовий пароль транзакції</label>
+                    <input type="password" class="form-input" id="withdraw-password" placeholder="Введіть пароль безпеки">
+                </div>
+
+                <button class="modal-submit-btn" id="submit-withdraw-btn">Вивести кошти</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 4. Lucky Wheel overlay modal sheet -->
+    <div class="modal-overlay" id="wheel-modal">
+        <div class="modal-sheet" style="padding-bottom:34px;">
+            <div class="modal-header">
+                <span class="modal-title outfit-font"><i class="fas fa-dharmachakra" style="color:var(--gold)"></i> Колесо удачі HMVOD</span>
+                <button class="close-sheet-btn"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Fortune spin layout -->
+            <div class="wheel-section">
+                <div class="wheel-outer">
+                    <!-- Pointer indicator pointing down at the wheel -->
+                    <svg class="wheel-pointer" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="15,30 5,5 25,5" fill="var(--gold)"/>
+                        <circle cx="15" cy="5" r="5" fill="#ff8c00"/>
+                    </svg>
+                    <div class="wheel-canvas-container">
+                        <!-- Simulated wheel layout (SVG disk) -->
+                        <svg class="wheel-canvas" id="wheel-canvas" viewBox="0 0 200 200">
+                            <!-- Slices -->
+                            <path d="M100,100 L100,0 A100,100 0 0,1 170.7,29.3 Z" fill="rgba(255, 0, 127, 0.25)" stroke="var(--border-glass)"/>
+                            <path d="M100,100 L170.7,29.3 A100,100 0 0,1 200,100 Z" fill="rgba(139, 0, 255, 0.25)" stroke="var(--border-glass)"/>
+                            <path d="M100,100 L200,100 A100,100 0 0,1 170.7,170.7 Z" fill="rgba(255, 0, 127, 0.25)" stroke="var(--border-glass)"/>
+                            <path d="M100,100 L170.7,170.7 A100,100 0 0,1 100,200 Z" fill="rgba(139, 0, 255, 0.25)" stroke="var(--border-glass)"/>
+                            <path d="M100,100 L100,200 A100,100 0 0,1 29.3,170.7 Z" fill="rgba(255, 0, 127, 0.25)" stroke="var(--border-glass)"/>
+                            <path d="M100,100 L29.3,170.7 A100,100 0 0,1 0,100 Z" fill="rgba(139, 0, 255, 0.25)" stroke="var(--border-glass)"/>
+                            <path d="M100,100 L0,100 A100,100 0 0,1 29.3,29.3 Z" fill="rgba(255, 0, 127, 0.25)" stroke="var(--border-glass)"/>
+                            <path d="M100,100 L29.3,29.3 A100,100 0 0,1 100,0 Z" fill="rgba(139, 0, 255, 0.25)" stroke="var(--border-glass)"/>
+                            
+                            <!-- Award Text Labels -->
+                            <text x="110" y="40" fill="white" font-size="7" font-weight="700" transform="rotate(22.5, 100, 100)">$1.00</text>
+                            <text x="110" y="40" fill="var(--text-muted)" font-size="6" font-weight="700" transform="rotate(67.5, 100, 100)">Пусто</text>
+                            <text x="110" y="40" fill="var(--gold)" font-size="7" font-weight="700" transform="rotate(112.5, 100, 100)">$5.00</text>
+                            <text x="110" y="40" fill="white" font-size="7" font-weight="700" transform="rotate(157.5, 100, 100)">$0.50</text>
+                            <text x="110" y="40" fill="var(--accent)" font-size="7" font-weight="700" transform="rotate(202.5, 100, 100)">VIP 1</text>
+                            <text x="110" y="40" fill="white" font-size="7" font-weight="700" transform="rotate(247.5, 100, 100)">$2.00</text>
+                            <text x="110" y="40" fill="var(--text-muted)" font-size="6" font-weight="700" transform="rotate(292.5, 100, 100)">Пусто</text>
+                            <text x="110" y="40" fill="var(--primary)" font-size="7" font-weight="700" transform="rotate(337.5, 100, 100)">$10.00</text>
+                        </svg>
+                        <div class="spin-center-btn" id="spin-center-btn">SPIN</div>
+                    </div>
+                </div>
+
+                <div style="text-align:center;">
+                    <p style="font-size:14px; font-weight:700;">Безкоштовних обертань: <span id="spins-left-num" style="color:var(--gold);">1</span></p>
+                    <p style="font-size:11px; color:var(--text-muted); margin-top:6px;">* За кожне поповнення на суму від $50.00 ви отримуєте +1 додаткове обертання колеса!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Calendar Sign-In Modal -->
+    <div class="modal-overlay" id="sign-modal">
+        <div class="modal-sheet">
+            <div class="modal-header">
+                <span class="modal-title outfit-font"><i class="fas fa-calendar-check" style="color:var(--green)"></i> Щоденний чек-ін за активність</span>
+                <button class="close-sheet-btn"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div style="text-align:center; padding:10px 0;">
+                <i class="fas fa-gift" style="font-size:52px; color:var(--primary); margin-bottom:14px; text-shadow:0 0 15px var(--primary-glow)"></i>
+                <h3 style="font-size:18px; margin-bottom:6px;">Щоденний бонус +$0.50 USDT</h3>
+                <p style="font-size:12px; color:var(--text-muted); line-height:1.4; margin-bottom:24px;">Натисніть на кнопку підтвердження щодня, щоб автоматично накопичувати додаткові кошти на вашому рахунку абсолютно безкоштовно.</p>
+                
+                <button class="modal-submit-btn" id="sign-in-btn-action" style="background: linear-gradient(135deg, var(--green), #00e676); color:#000;">Підтвердити прибуток</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. KYC Verification Modal -->
+    <div class="modal-overlay" id="kyc-modal">
+        <div class="modal-sheet">
+            <div class="modal-header">
+                <span class="modal-title outfit-font"><i class="fas fa-user-shield" style="color:var(--accent)"></i> Верифікація особи (KYC)</span>
+                <button class="close-sheet-btn"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <form>
+                <div class="form-group">
+                    <label class="form-label">Повне ім'я та прізвище</label>
+                    <input type="text" class="form-input" placeholder="Введіть ПІБ">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Країна проживання</label>
+                    <input type="text" class="form-input" placeholder="Наприклад, Україна">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Тип ідентифікаційного документа</label>
+                    <select class="form-input" style="background: #1c132b;">
+                        <option>ID-Картка / Паспорт</option>
+                        <option>Посвідчення водія</option>
+                        <option>Закордонний паспорт</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Завантажити фото документа (Лицьова сторона)</label>
+                    <input type="file" class="form-input" style="padding:10px;">
+                </div>
+                
+                <button class="modal-submit-btn" id="submit-kyc-btn" style="background:var(--accent); color:black;">Надіслати на верифікацію</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 7. Support Modal -->
+    <div class="modal-overlay" id="support-modal">
+        <div class="modal-sheet">
+            <div class="modal-header">
+                <span class="modal-title outfit-font"><i class="fas fa-headset" style="color:var(--accent)"></i> Служба підтримки клієнтів HMVOD</span>
+                <button class="close-sheet-btn"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <form style="padding-bottom:10px;">
+                <div style="text-align:center; margin-bottom:16px;">
+                    <p style="font-size:12px; color:var(--text-muted);">Наші фахівці готові допомогти вам 24/7. Будь ласка, опишіть ваше звернення або запитання нижче.</p>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Ваше звернення</label>
+                    <textarea class="form-input" id="support-msg" rows="4" placeholder="Опишіть вашу проблему..." style="resize:none; font-family:var(--font-inter);"></textarea>
+                </div>
+                
+                <button class="modal-submit-btn" id="submit-support-btn" style="background:linear-gradient(135deg, var(--primary), var(--secondary));">Зв'язатися</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Embedded core scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
